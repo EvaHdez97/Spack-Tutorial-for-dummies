@@ -64,13 +64,8 @@ spack.yaml
 cat spack.yaml
 
 This is a Spack Environment file.
-
-
-It describes a set of packages to be installed, along with
-
-configuration settings.
+It describes a set of packages to be installed, along withconfiguration settings.
 spack:
-
 add package specs to the `specs` list
   specs: []
   view: true
@@ -79,4 +74,9 @@ add package specs to the `specs` list
 ```
 Notice that Spack created a spack.yaml file in the code directory. Also note that the configuration file has an empty spec list (i.e., []). 
 That list is intended to contain only the root specs of the environment.
+
+To activate the independent environment:
+```
+spack env activate .
+```
 

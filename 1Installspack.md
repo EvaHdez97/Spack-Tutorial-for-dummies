@@ -44,3 +44,8 @@ For fish
 . spack/share/spack/setup-env.fish
 ```
 That’s it! You’re ready to use Spack.
+
+## Extra: How can I view the available compilers on my system?
+```
+spack compiler list
+```

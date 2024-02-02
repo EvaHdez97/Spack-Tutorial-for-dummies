@@ -39,3 +39,44 @@ spack check status
 spack env deactivate
 ```
 ### Create an independent environment
+
+Environments do not have to be created in or managed by a Spack instance. Rather, their environment files can be placed in any directory. 
+This feature can be quite helpful for use cases such as environment-based software releases and CI/CD.
+```
+cd
+
+mkdir code
+
+cd code
+
+spack env create -d .
+==> Created environment in /home/spack/code
+==> You can activate this environment with:
+==>   spack env activate /home/spack/code
+```
+Notice that the command shows Spack created the environment, updated the view, and printed the command needed to activate it. As we can see in the activation command, since the environment is independent, it must be referenced by its directory path.
+
+Let’s see what really happened with this command by listing the directory contents and looking at the configuration file:
+```
+ls
+spack.yaml
+
+cat spack.yaml
+
+This is a Spack Environment file.
+
+
+It describes a set of packages to be installed, along with
+
+configuration settings.
+spack:
+
+add package specs to the `specs` list
+  specs: []
+  view: true
+  concretizer:
+    unify: true
+```
+Notice that Spack created a spack.yaml file in the code directory. Also note that the configuration file has an empty spec list (i.e., []). 
+That list is intended to contain only the root specs of the environment.
+

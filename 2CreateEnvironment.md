@@ -47,9 +47,7 @@ cd
 
 mkdir code
 
-cd code
-
-spack env create -d .
+spack env create -d code
 ==> Created environment in /home/spack/code
 ==> You can activate this environment with:
 ==>   spack env activate /home/spack/code

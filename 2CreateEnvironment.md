@@ -24,5 +24,18 @@ spack env list
 ```
 spack env activate myproject
 ```
+### List packages inside environment
 
+```
+spack find
+```
+### Check what environment you are in
 
+```
+spack check status
+```
+### Deactivate an environment
+```
+spack env deactivate
+```
+### Create an independent environment

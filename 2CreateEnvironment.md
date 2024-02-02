@@ -8,5 +8,21 @@ It has an associated view, which is a single prefix where all packages from the 
 ### Create environment
 ```
 spack env create myproject
+==> Created environment 'myproject' in /home/spack/spack/var/spack/environments/myproject
+==> You can activate this environment with:
+==>   spack env activate myproject
 ```
+### List environments in Spack
+
+```
+spack env list
+==> 1 environments
+    myproject
+```
+### Activate an environment
+
+```
+spack env activate myproject
+```
+
 

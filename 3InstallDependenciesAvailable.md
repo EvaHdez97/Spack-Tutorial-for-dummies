@@ -1,4 +1,4 @@
-# Create an independent environment and activate it
+# How to install dependencies available in Spack
 
 ## Create environments
 

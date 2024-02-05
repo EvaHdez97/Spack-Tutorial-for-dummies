@@ -76,5 +76,15 @@ As we can see, the `datetime` package is included, so there's no need to install
 Another option to check if the `datetime` package is installed is, with the environment active and the Python package already installed, execute Python in the command line and try to import the `datetime` package. 
 If it does not throw an error, this indicates that it is included.
 ```
-
+ehernandez@ehernandez-TITAN:~$ python
+Python 3.11.6 (main, Jan 24 2024, 13:09:23) [GCC 11.4.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import datetime
+>>> 
 ```
+## Second option
+The package is not present in Spack or in any already installed package. 
+In this section of the tutorial, we will install a package from the source by finding the appropriate version from official sources. 
+For Python packages, we can refer to https://pypi.org/.
+
+

@@ -1,4 +1,4 @@
-# How to install dependencies available in Spack
+# How to install available dependencies in Spack
 
 ## List of available packages in Spack
 ```

@@ -30,7 +30,8 @@ spack find
 ### Check what environment you are in
 
 ```
-spack check status
+spack env status
+==> In environment myproject
 ```
 ### Deactivate an environment
 ```

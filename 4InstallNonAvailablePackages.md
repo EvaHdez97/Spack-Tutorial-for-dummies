@@ -255,7 +255,34 @@ Now, you can add and install the package py-dtcv2-util in your environment.
 ```
 spack install --add py-dtcv2-util
 ```
+When finished, we can check if it appears in the installed packages section.
+```
+spack find
 
+==> In environment /home/ehernandez/demodtgeo
+==> Root specs
+eccodes   py-cfgrib   py-dtcv2-util   py-ecmwflibs   py-netcdf4   py-requests   py-xarray   python 
+
+==> Installed packages
+-- linux-ubuntu22.04-zen3 / gcc@11.4.0 --------------------------
+autoconf@2.72                       gettext@0.22.4        libtool@2.4.7     pcre2@10.42                  py-eccodes@1.5.0                   py-pip@23.1.2                  py-xarray@2023.7.0
+automake@1.16.5                     git@2.42.0            libunistring@1.1  perl@5.38.0                  py-ecmwflibs@0.5.3                 py-pluggy@1.0.0                python@3.11.6
+berkeley-db@18.1.40                 gmake@4.4.1           libxcrypt@4.4.35  pigz@2.8                     py-editables@0.3                   py-pycparser@2.21              re2c@2.2
+bison@3.8.2                         hdf5@1.14.3           libxml2@2.10.3    pkgconf@1.9.5                py-findlibs@0.0.2                  py-pyproject-metadata@0.7.1    readline@8.2
+bzip2@1.0.8                         hwloc@2.9.1           lz4@1.9.4         pmix@5.0.1                   py-flit-core@3.9.0                 py-python-dateutil@2.8.2       snappy@1.1.10
+c-blosc@1.21.5                      krb5@1.20.1           m4@1.4.19         py-attrs@23.1.0              py-hatch-fancy-pypi-readme@23.1.0  py-pytz@2023.3                 sqlite@3.43.2
+ca-certificates-mozilla@2023-05-30  libaec@1.0.6          ncurses@6.4       py-bottleneck@1.3.7          py-hatch-vcs@0.3.0                 py-requests@2.31.0             tar@1.34
+cmake@3.27.9                        libbsd@0.11.7         netcdf-c@4.9.2    py-calver@2022.6.26          py-hatchling@1.21.0                py-setuptools@68.0.0           util-linux-uuid@2.38.1
+curl@8.4.0                          libedit@3.1-20210216  nghttp2@1.57.0    py-certifi@2023.7.22         py-idna@3.4                        py-setuptools-scm@7.1.0        util-macros@1.19.3
+diffutils@3.9                       libevent@2.1.12       ninja@1.11.1      py-cffi@1.15.1               py-mpi4py@3.1.5                    py-six@1.16.0                  xz@5.4.1
+ecbuild@3.7.2                       libffi@3.4.4          numactl@2.0.14    py-cfgrib@0.9.9.0            py-netcdf4@1.6.2                   py-tomli@2.0.1                 zlib-ng@2.1.5
+eccodes@2.32.0                      libiconv@1.17         openblas@0.3.26   py-cftime@1.0.3.4            py-numexpr@2.8.4                   py-trove-classifiers@2023.8.7  zstd@1.5.5
+expat@2.5.0                         libidn2@2.3.4         openjpeg@2.3.1    py-charset-normalizer@3.3.0  py-numpy@1.26.3                    py-typing-extensions@4.8.0
+findutils@4.9.0                     libmd@1.0.4           openmpi@5.0.1     py-click@8.1.7               py-packaging@23.1                  py-urllib3@2.1.0
+gcc-runtime@11.4.0                  libpciaccess@0.17     openssh@9.5p1     py-cython@0.29.36            py-pandas@1.5.3                    py-versioneer@0.29
+gdbm@1.23                           libsigsegv@2.14       openssl@3.1.3     py-dtcv2-util@0.0.60         py-pathspec@0.11.1                 py-wheel@0.41.2
+==> 108 installed packages
+```
 
 
 

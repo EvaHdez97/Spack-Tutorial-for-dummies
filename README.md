@@ -7,6 +7,6 @@ This is a guide for learning how to install Spack and set up an independent envi
 
 1. Install and activate spack
 2. Create an independent environment and activate it
-3. How to install dependencies available in Spack
-4. How to install dependencies non-available in Spack
+3. How to install available packages in Spack
+4. How to install non-available packages in Spack
 5. Spack.yaml file and package.py

@@ -16,68 +16,118 @@ https://packages.spack.io/
 ### Add a package to your environment
 
 ```
-spack env list
-==> 1 environments
-    myproject
+spack add py-numpy
+==> Adding py-numpy to environment myproject
 ```
-### Install a package in your environment
-
-```
-spack env activate myproject
-```
-### List packages inside environment
-
+Check if package has been added correctly
 ```
 spack find
+==> In environment myproject
+==> Root specs
+py-numpy 
+
+==> 0 installed packages
 ```
-### Check what environment you are in
+
+### Install a package in your environment
+
+Let's install the previously added package, py-numpy.
+```
+spack install py-numpy
+```
+Now check if the environment has been updated.
+```
+spack find
+==> In environment myproject
+==> Root specs
+py-numpy 
+
+==> Installed packages
+-- linux-ubuntu22.04-zen3 / gcc@11.4.0 --------------------------
+berkeley-db@18.1.40                 gcc-runtime@11.4.0  libffi@3.4.4      ncurses@6.4      pigz@2.8            py-packaging@23.1            python@3.11.6  util-linux-uuid@2.38.1
+bzip2@1.0.8                         gdbm@1.23           libiconv@1.17     ninja@1.11.1     pkgconf@1.9.5       py-pip@23.1.2                re2c@2.2       xz@5.4.1
+ca-certificates-mozilla@2023-05-30  gettext@0.22.4      libmd@1.0.4       openblas@0.3.26  py-cython@0.29.36   py-pyproject-metadata@0.7.1  readline@8.2   zlib-ng@2.1.5
+diffutils@3.9                       gmake@4.4.1         libxcrypt@4.4.35  openssl@3.1.3    py-flit-core@3.9.0  py-setuptools@68.0.0         sqlite@3.43.2  zstd@1.5.5
+expat@2.5.0                         libbsd@0.11.7       libxml2@2.10.3    perl@5.38.0      py-numpy@1.26.3     py-wheel@0.41.2              tar@1.34
+==> 39 installed packages
+```
+You can add and install a package at the same time too.
+```
+spack install --add py-numpy
+```
+### How to add a specific version of a package
+
+Sometimes, due to software requirements, it is necessary to install a specific version of a package because the software demands it. 
+You can install a specific version of a Spack package as follows:
 
 ```
-spack check status
+spack install --add py-numpy@1.26.3
 ```
-### Deactivate an environment
-```
-spack env deactivate
-```
-### Create an independent environment
+### How to upgrade a package
 
-Environments do not have to be created in or managed by a Spack instance. Rather, their environment files can be placed in any directory. 
-This feature can be quite helpful for use cases such as environment-based software releases and CI/CD.
-```
-cd
+In Spack, there isn't a specific command to upgrade packages within an environment. 
+The only way to achieve this is by uninstalling and removing the existing package, and then adding and installing the new version.
 
-mkdir code
-
-spack env create -d code
-==> Created environment in /home/spack/code
-==> You can activate this environment with:
-==>   spack env activate /home/spack/code
 ```
-Notice that the command shows Spack created the environment, updated the view, and printed the command needed to activate it. As we can see in the activation command, since the environment is independent, it must be referenced by its directory path.
-
-Let’s see what really happened with this command by listing the directory contents and looking at the configuration file:
+spack uninstall py-numpy
+spack remove py-numpy
 ```
-ls
-spack.yaml
+One of the possible errors that can occur with this action is that it may not be able to uninstall it properly due to dependencies. 
 
-cat spack.yaml
+```
+spack remove py-numpy
+==> Refusing to uninstall the following specs
+    -- linux-ubuntu22.04-zen3 / gcc@11.4.0 --------------------------
+    havquus py-numpy@1.26.3
 
-This is a Spack Environment file.
-It describes a set of packages to be installed, along withconfiguration settings.
-spack:
-add package specs to the `specs` list
-  specs: []
-  view: true
-  concretizer:
-    unify: true
-```
-Notice that Spack created a spack.yaml file in the code directory. Also note that the configuration file has an empty spec list (i.e., []). 
-That list is intended to contain only the root specs of the environment.
+==> The following dependents are still installed:
+    -- linux-ubuntu22.04-zen3 / gcc@11.4.0 --------------------------
+    aigfqu4 py-bottleneck@1.3.7  2ik62py py-cftime@1.0.3.4  jzdrj5l py-netcdf4@1.6.2  s7abjru py-pandas@1.5.3
+    gs35sc6 py-cfgrib@0.9.9.0    b3g5m2l py-eccodes@1.5.0   kr4gqp6 py-numexpr@2.8.4  seqorzg py-xarray@2023.7.0
 
-To activate the independent environment:
+==> Error: There are still dependents.
+  use `spack uninstall --dependents` to remove dependents too
+  use `spack uninstall --force` to override
+==> py-numpy has been removed from /home/ehernandez/spack/var/spack/environments/myproject/spack.yaml
 ```
-spack env activate .
+In this case, the following command is used to uninstall them:
 ```
+spack uninstall --dependents py-numpy
+```
+Now it works:
+```
+    -- linux-ubuntu22.04-zen3 / gcc@11.4.0 --------------------------
+    aigfqu4 py-bottleneck@1.3.7  2ik62py py-cftime@1.0.3.4  jzdrj5l py-netcdf4@1.6.2  havquus py-numpy@1.26.3  seqorzg py-xarray@2023.7.0
+    gs35sc6 py-cfgrib@0.9.9.0    b3g5m2l py-eccodes@1.5.0   kr4gqp6 py-numexpr@2.8.4  s7abjru py-pandas@1.5.3
+
+==> 9 packages will be uninstalled. Do you want to proceed? [y/N] y
+==> Successfully uninstalled py-xarray@2023.7.0%gcc@11.4.0~io~parallel build_system=python_pip arch=linux-ubuntu22.04-zen3/seqorzg
+==> Successfully uninstalled py-cfgrib@0.9.9.0%gcc@11.4.0~xarray build_system=python_pip arch=linux-ubuntu22.04-zen3/gs35sc6
+==> Successfully uninstalled py-pandas@1.5.3%gcc@11.4.0~excel build_system=python_pip arch=linux-ubuntu22.04-zen3/s7abjru
+==> Successfully uninstalled py-numexpr@2.8.4%gcc@11.4.0 build_system=python_pip arch=linux-ubuntu22.04-zen3/kr4gqp6
+==> Successfully uninstalled py-netcdf4@1.6.2%gcc@11.4.0+mpi build_system=python_pip patches=255b5ae arch=linux-ubuntu22.04-zen3/jzdrj5l
+==> Successfully uninstalled py-cftime@1.0.3.4%gcc@11.4.0 build_system=python_pip arch=linux-ubuntu22.04-zen3/2ik62py
+==> Successfully uninstalled py-eccodes@1.5.0%gcc@11.4.0 build_system=python_pip arch=linux-ubuntu22.04-zen3/b3g5m2l
+==> Successfully uninstalled py-bottleneck@1.3.7%gcc@11.4.0 build_system=python_pip arch=linux-ubuntu22.04-zen3/aigfqu4
+==> Successfully uninstalled py-numpy@1.26.3%gcc@11.4.0 build_system=python_pip patches=873745d arch=linux-ubuntu22.04-zen3/havquus
+==> Updating view at /home/ehernandez/spack/var/spack/environments/myproject/.spack-env/view
+```
+Now if we check the environment we won't see the py-numpy package within the installed packages section:
+```
+==> In environment myproject
+==> No root specs
+==> Installed packages
+-- linux-ubuntu22.04-zen3 / gcc@11.4.0 --------------------------
+berkeley-db@18.1.40                 gcc-runtime@11.4.0  libffi@3.4.4      ncurses@6.4      pigz@2.8            py-pip@23.1.2                re2c@2.2                xz@5.4.1
+bzip2@1.0.8                         gdbm@1.23           libiconv@1.17     ninja@1.11.1     pkgconf@1.9.5       py-pyproject-metadata@0.7.1  readline@8.2            zlib-ng@2.1.5
+ca-certificates-mozilla@2023-05-30  gettext@0.22.4      libmd@1.0.4       openblas@0.3.26  py-cython@0.29.36   py-setuptools@68.0.0         sqlite@3.43.2           zstd@1.5.5
+diffutils@3.9                       gmake@4.4.1         libxcrypt@4.4.35  openssl@3.1.3    py-flit-core@3.9.0  py-wheel@0.41.2              tar@1.34
+expat@2.5.0                         libbsd@0.11.7       libxml2@2.10.3    perl@5.38.0      py-packaging@23.1   python@3.11.6                util-linux-uuid@2.38.1
+==> 38 installed packages
+```
+
+
+
 
 
 

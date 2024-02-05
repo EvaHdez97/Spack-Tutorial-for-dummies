@@ -1,9 +1,9 @@
-# Create an independent environment and activate it
+# Create an Spack simple environment and Spack independent environment and activate it
 
 An environment is like a virtualized Spack instance that you can use to aggregate package installations for a project or other purpose. 
 It has an associated view, which is a single prefix where all packages from the environment are linked.
 
-## Create environment
+## Create Spack simple environment
 ```
 spack env create myproject
 ==> Created environment 'myproject' in /home/spack/spack/var/spack/environments/myproject

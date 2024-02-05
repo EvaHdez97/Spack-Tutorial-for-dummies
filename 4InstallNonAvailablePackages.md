@@ -84,7 +84,106 @@ Type "help", "copyright", "credits" or "license" for more information.
 ```
 ## Second option
 The package is not present in Spack or in any already installed package. 
-In this section of the tutorial, we will install a package from the source by finding the appropriate version from official sources. 
-For Python packages, we can refer to https://pypi.org/.
+
+### Download the correct package version
+
+In this section of the tutorial, we will install the package `dtcv2_utils` with their dependencies from the source by finding the appropriate version from official sources. 
+For Python packages, we can refer to https://pypi.org/. 
+In the download section of each package on PyPi, you can find various download options depending on the operating system where it needs to be installed.
+For Windows: win_amd64
+For macOS: macosx
+For Linux: manylinux
+Some packages don't have different download links for each version. In these cases, search for the package with "none-any.whl" extension.
+
+To download the last version of the package go to https://test.pypi.org/project/dtcv2-util/ and download the package with "none-any.whl" extension.
+
+Once the download has finished, open the file on your system using a file manager and access the "METADATA" in the dtcv2_util-0.0.60.dist-info folder.
+
+```
+Metadata-Version: 2.1
+Name: dtcv2-util
+Version: 0.0.60
+Summary: Library for workflow management
+Home-page: https://gitlab.geo3bcn.csic.es/dtgeo/dtc-v2/meteo-gfs
+Author: Alejandra Guerrero - DTGEO
+Author-email: aguerrero@geo3bcn.csic.es
+License: MIT
+Description-Content-Type: text/markdown
+Requires-Dist: datetime
+Requires-Dist: eccodes
+Requires-Dist: ecmwflibs
+Requires-Dist: cfgrib
+Requires-Dist: xarray
+Requires-Dist: requests
+Requires-Dist: netcdf4
+
+# DTCV2-utils
+The library 
+```
+Each "Requires-Dist" label indicates the dependencies of the dtcv2-util package. You must install all of them before installing this package.
+Once all dependencies are installed, let's create the package.py file for the "dtcv2-util" package using the link of the package within download page.
+
+### Create package.py 
+```
+spack create https://test-files.pythonhosted.org/packages/4b/75/9956049142e7d07eaa7bde7baccf6fcb9beec7d3bc21466c165386808ebe/dtcv2_util-0.0.60-py3-none-any.whl
+```
+Once this command is executed, Spack will have created the following file.
+```
+#
+# You can edit this file again by typing:
+#
+#     spack edit py-dtcv2-util
+#
+# See the Spack documentation for more information on packaging.
+# ----------------------------------------------------------------------------
+
+from spack.package import *
+
+
+class PyDtcv2Util(PythonPackage):
+    """FIXME: Put a proper description of your package here."""
+
+    # FIXME: Add a proper url for your package's homepage here.
+    homepage = "https://www.example.com"
+    url = "https://test-files.pythonhosted.org/packages/4b/75/9956049142e7d07eaa7bde7baccf6fcb9beec7d3bc21466c165386808ebe/dtcv2_util-0.0.60-py3-none-any.whl"
+
+    # FIXME: Add a list of GitHub accounts to
+    # notify when the package is updated.
+    # maintainers("github_user1", "github_user2")
+
+    # FIXME: Add the SPDX identifier of the project's license below.
+    # See https://spdx.org/licenses/ for a list. Upon manually verifying
+    # the license, set checked_by to your Github username.
+    license("UNKNOWN", checked_by="github_user1")
+
+    version("0.0.60", sha256="c8a27488103d62f48ad739c576a223ab5c23f3972a0ce2037fb99bf756aa6fcc", expand=False)
+
+    # FIXME: Only add the python/pip/wheel dependencies if you need specific versions
+    # or need to change the dependency type. Generic python/pip/wheel dependencies are
+    # added implicity by the PythonPackage base class.
+    # depends_on("python@2.X:2.Y,3.Z:", type=("build", "run"))
+    # depends_on("py-pip@X.Y:", type="build")
+    # depends_on("py-wheel@X.Y:", type="build")
+
+    # FIXME: Add a build backend, usually defined in pyproject.toml. If no such file
+    # exists, use setuptools.
+    # depends_on("py-setuptools", type="build")
+    # depends_on("py-hatchling", type="build")
+    # depends_on("py-flit-core", type="build")
+    # depends_on("py-poetry-core", type="build")
+
+    # FIXME: Add additional dependencies if required.
+    # depends_on("py-foo", type=("build", "run"))
+
+    def config_settings(self, spec, prefix):
+        # FIXME: Add configuration settings to be passed to the build backend
+        # FIXME: If not needed, delete this function
+        settings = {}
+        return settings
+```
+
+
+
+
 
 

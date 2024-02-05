@@ -181,6 +181,82 @@ class PyDtcv2Util(PythonPackage):
         settings = {}
         return settings
 ```
+When you add a new package to Spack, it automatically assigns a name to the package; in this case, py-dtcv2-util. You can find the name at the top of the file.
+For now, we have to edit two sections; the first one to modify is the "url" and "homepage" section.
+We have the following:
+```
+ # FIXME: Add a proper url for your package's homepage here.
+    homepage = "https://www.example.com"
+    url = "https://test-files.pythonhosted.org/packages/4b/75/9956049142e7d07eaa7bde7baccf6fcb9beec7d3bc21466c165386808ebe/dtcv2_util-0.0.60-py3-none-any.whl"
+```
+Change it for this:
+```
+homepage = "https://test.pypi.org/project/dtcv2-util/"
+url      = "https://test-files.pythonhosted.org/packages/4b/75/9956049142e7d07eaa7bde7baccf6fcb9beec7d3bc21466c165386808ebe/dtcv2_util-0.0.60-py3-none-any.whl"
+list_url = "https://test.pypi.org/project/dtcv2-util/#files"
+```
+Save the file.
+
+Since we are providing a url, we can confirm the checksum, or sha256 calculation. Exit your editor to return to the command line and use the spack checksum command:
+```
+spack checksum py-dtcv2-util
+==> Found 1 version of py-dtcv2-util
+==> Fetching https://test-files.pythonhosted.org/packages/4b/75/9956049142e7d07eaa7bde7baccf6fcb9beec7d3bc21466c165386808ebe/dtcv2_util-0.0.60-py3-none-any.whl
+
+    version("0.0.60", sha256="c8a27488103d62f48ad739c576a223ab5c23f3972a0ce2037fb99bf756aa6fcc", expand=False)
+```
+From the command line, we can check the build and run dependencies required by this new package.
+
+```
+spack info py-dtcv2-util
+
+PythonPackage:   py-dtcv2-util
+
+Description:
+    FIXME: Put a proper description of your package here.
+
+Homepage: https://www.example.com
+
+Preferred version:  
+    0.0.60    https://test-files.pythonhosted.org/packages/4b/75/9956049142e7d07eaa7bde7baccf6fcb9beec7d3bc21466c165386808ebe/dtcv2_util-0.0.60-py3-none-any.whl
+
+Safe versions:  
+    0.0.60    https://test-files.pythonhosted.org/packages/4b/75/9956049142e7d07eaa7bde7baccf6fcb9beec7d3bc21466c165386808ebe/dtcv2_util-0.0.60-py3-none-any.whl
+
+Deprecated versions:  
+    None
+
+Variants:
+    build_system [python_pip]        python_pip
+        Build systems supported by the package
+
+Build Dependencies:
+    py-pip  py-wheel  python
+
+Link Dependencies:
+    None
+
+Run Dependencies:
+    python
+
+Licenses: 
+    UNKNOWN
+
+```
+In this case, we don't need to add the dependencies py-pip, python, and py-wheel within dtcv2-util package.py because we don't require a specific version of each package, as indicated in the package.py file.
+If needed, you can add the build and run dependencies following the examples inside the package.py file.
+
+```
+# depends_on("py-foo", type=("build", "run"))
+# depends_on("python@2.X:2.Y,3.Z:", type=("build", "run"))
+```
+Now, you can add and install the package py-dtcv2-util in your environment.
+```
+spack install --add py-dtcv2-util
+```
+
+
+
 
 
 

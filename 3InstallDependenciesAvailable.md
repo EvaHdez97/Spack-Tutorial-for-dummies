@@ -1,25 +1,26 @@
 # How to install dependencies available in Spack
 
-## Create environments
-
-An environment is like a virtualized Spack instance that you can use to aggregate package installations for a project or other purpose. 
-It has an associated view, which is a single prefix where all packages from the environment are linked.
-
-### Create environment
+## List of available packages in Spack
 ```
-spack env create myproject
-==> Created environment 'myproject' in /home/spack/spack/var/spack/environments/myproject
-==> You can activate this environment with:
-==>   spack env activate myproject
+spack list
 ```
-### List environments in Spack
+### Search for a specific package in Spack
+```
+spack list eccodes
+eccodes py-eccodes
+==> 2 packages
+```
+To find out which Spack package among the available options best suits your needs, you can search for information about Spack packages at this URL.
+https://packages.spack.io/
+
+### Add a package to your environment
 
 ```
 spack env list
 ==> 1 environments
     myproject
 ```
-### Activate an environment
+### Install a package in your environment
 
 ```
 spack env activate myproject

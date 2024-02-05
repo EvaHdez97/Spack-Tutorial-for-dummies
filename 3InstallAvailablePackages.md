@@ -1,6 +1,6 @@
 # How to install available packages in Spack
 
-## List of available packages in Spack
+### List of available packages in Spack
 ```
 spack list
 ```

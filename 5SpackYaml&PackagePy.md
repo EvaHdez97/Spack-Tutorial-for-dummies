@@ -1,4 +1,4 @@
-# Install and activate Spack
+# Spack.yaml file and package.py files
 
 ## System Prerequisites
 

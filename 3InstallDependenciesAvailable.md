@@ -35,7 +35,7 @@ Let's install the previously added package, py-numpy.
 ```
 spack install py-numpy
 ```
-Now check if the environment has been updated.
+Now check if the environment has been updated. If everything goes well, we will see the `py-numpy` package within the installed packages section.
 ```
 spack find
 ==> In environment myproject
@@ -112,7 +112,7 @@ Now it works:
 ==> Successfully uninstalled py-numpy@1.26.3%gcc@11.4.0 build_system=python_pip patches=873745d arch=linux-ubuntu22.04-zen3/havquus
 ==> Updating view at /home/ehernandez/spack/var/spack/environments/myproject/.spack-env/view
 ```
-Now if we check the environment we won't see the py-numpy package within the installed packages section:
+Now, if we check the environment, we won't find the `py-numpy` package within the installed packages section.
 ```
 ==> In environment myproject
 ==> No root specs

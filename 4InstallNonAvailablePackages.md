@@ -93,6 +93,7 @@ In the download section of each package on PyPi, you can find various download o
 - For Windows: win_amd64
 - For macOS: macosx
 - For Linux: manylinux
+
 Some packages don't have different download links for each version. In these cases, search for the package with "none-any.whl" extension.
 
 To download the last version of the package go to https://test.pypi.org/project/dtcv2-util/ and download the package with "none-any.whl" extension.

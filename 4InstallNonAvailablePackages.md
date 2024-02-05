@@ -90,9 +90,9 @@ The package is not present in Spack or in any already installed package.
 In this section of the tutorial, we will install the package `dtcv2_utils` with their dependencies from the source by finding the appropriate version from official sources. 
 For Python packages, we can refer to https://pypi.org/. 
 In the download section of each package on PyPi, you can find various download options depending on the operating system where it needs to be installed.
-For Windows: win_amd64
-For macOS: macosx
-For Linux: manylinux
+- For Windows: win_amd64
+- For macOS: macosx
+- For Linux: manylinux
 Some packages don't have different download links for each version. In these cases, search for the package with "none-any.whl" extension.
 
 To download the last version of the package go to https://test.pypi.org/project/dtcv2-util/ and download the package with "none-any.whl" extension.

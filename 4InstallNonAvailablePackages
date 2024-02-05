@@ -1,4 +1,9 @@
-# How to install available packages in Spack
+# How to install non-available packages in Spack
+
+There may be situations where Spack does not have a built-in package recipe for the software of interest.
+In this case, we may encounter two different scenarios:
+- The package we are looking for is a dependency of an already installed package, and Spack does not indicate it.
+- The package is not present in Spack or in any already installed package.
 
 ## List of available packages in Spack
 ```

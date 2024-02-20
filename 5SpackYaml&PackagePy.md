@@ -27,6 +27,8 @@ In the package.py file, there are several important sections to make it work:
 3. The dependencies
    
 In this case, they have been added because a specific version of Python was required, there were pre-installation PyPI dependency packages that this package needed, and the wheel package to avoid the need to compile the source code of the package during installation, which is faster and easier.
+
+The "build" option is used by Spack to compile and build the package, while the "run" option is used when the package needs this dependency to function.
 ```
    # FIXME: Only add the python/pip/wheel dependencies if you need specific versions
     # or need to change the dependency type. Generic python/pip/wheel dependencies are

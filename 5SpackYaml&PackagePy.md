@@ -11,6 +11,30 @@ ls /home/ehernandez/spack/var/spack/repos/builtin/packages
 ls /home/ehernandez/spack/var/spack/repos/builtin/packages/py-dtcv2-util/
 package.py  __pycache__
 ```
+In the package.py file, there are several important sections to make it work:
+
+1. The source and the information of the package
+```
+   # FIXME: Add a proper url for your package's homepage here.
+    homepage = "https://test.pypi.org/project/dtcv2-util"
+    url = "https://test-files.pythonhosted.org/packages/4b/75/9956049142e7d07eaa7bde7baccf6fcb9beec7d3bc21466c165386808ebe/dtcv2_util-0.0.60-py3-none-any.whl"
+    list_url = "https://test.pypi.org/project/dtcv2-util/#files"
+```
+2.  The software version
+```
+    version("0.0.60", sha256="c8a27488103d62f48ad739c576a223ab5c23f3972a0ce2037fb99bf756aa6fcc", expand=False)
+```
+3. The dependencies
+   
+In this case, they have been added because a specific version of Python was required, there were pre-installation PyPI dependency packages that this package needed, and the wheel package to avoid the need to compile the source code of the package during installation, which is faster and easier.
+```
+   # FIXME: Only add the python/pip/wheel dependencies if you need specific versions
+    # or need to change the dependency type. Generic python/pip/wheel dependencies are
+    # added implicity by the PythonPackage base class.
+    depends_on("python@3.8", type=("build", "run"))
+    depends_on("py-pip", type="build")
+    depends_on("py-wheel", type="build")
+```
 ## Spack.yaml 
 
 An environment is more than just a list of root specs. It includes configuration settings that affect the way Spack behaves when the environment is activated.

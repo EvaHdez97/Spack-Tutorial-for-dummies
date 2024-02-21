@@ -125,6 +125,8 @@ Each "Requires-Dist" label indicates the dependencies of the dtcv2-util package.
 Once all dependencies are installed, let's create the package.py file for the "dtcv2-util" package using the link of the package within download page.
 
 ### Create package.py 
+
+IMPORTANT: Before creating and installing the package, you must check its dependencies from the source page of the package and install them first.
 ```
 spack create https://test-files.pythonhosted.org/packages/4b/75/9956049142e7d07eaa7bde7baccf6fcb9beec7d3bc21466c165386808ebe/dtcv2_util-0.0.60-py3-none-any.whl
 ```
